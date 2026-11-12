@@ -103,7 +103,11 @@ export default function VimmVaultPage() {
           }
         }
       } catch {
-        localStorage.removeItem(CATALOGUE_CACHE_KEY);
+        try {
+          localStorage.removeItem(CATALOGUE_CACHE_KEY);
+        } catch {
+          // Storage can be disabled by the host environment.
+        }
       }
 
       try {
@@ -120,7 +124,11 @@ export default function VimmVaultPage() {
         }
 
         setGames(validatedGames);
-        localStorage.setItem(CATALOGUE_CACHE_KEY, JSON.stringify(payload));
+        try {
+          localStorage.setItem(CATALOGUE_CACHE_KEY, JSON.stringify(payload));
+        } catch {
+          // Browsing remains available when persistent storage is unavailable.
+        }
       } catch (cause) {
         if (!controller.signal.aborted) {
           console.error("Unable to load VimmVault catalogue", cause);
