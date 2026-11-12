@@ -1,0 +1,19 @@
+{
+  "description": "Explore jogos clássicos por plataforma. Abra a página individual no Vimm's Lair para consultar a fonte original.",
+  "open_vault": "Abrir The Vault",
+  "filters": "Filtros do catálogo VimmVault",
+  "search_placeholder": "Pesquisar jogos, plataformas ou desenvolvedores",
+  "platform": "Plataforma",
+  "all_platforms": "Todas as plataformas",
+  "loading": "Carregando catálogo VimmVault…",
+  "load_error_title": "Não foi possível carregar o catálogo",
+  "load_error_description": "Verifique sua conexão e tente novamente. O catálogo remoto pode estar temporariamente indisponível.",
+  "retry": "Tentar novamente",
+  "catalogue_empty_title": "O catálogo está sendo preparado",
+  "catalogue_empty_description": "A interface nativa está conectada à estrutura do catálogo. Os jogos aparecerão aqui assim que os registros verificados forem publicados.",
+  "no_results_title": "Nenhum jogo encontrado",
+  "no_results_description": "Tente outro termo ou selecione uma plataforma diferente.",
+  "games_count": "{{count}} jogos",
+  "view_vimm_page": "Página no Vimm",
+  "catalog_only": "Somente catálogo · sem download"
+}

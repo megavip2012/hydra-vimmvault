@@ -1,6 +1,8 @@
 import en from "./en/translation.json";
+import enVimmVault from "./en/vimmvault.json";
 import ptPT from "./pt-PT/translation.json";
 import ptBR from "./pt-BR/translation.json";
+import ptBRVimmVault from "./pt-BR/vimmvault.json";
 import es from "./es/translation.json";
 import nl from "./nl/translation.json";
 import fr from "./fr/translation.json";
@@ -35,9 +37,9 @@ import ja from "./ja/translation.json";
 import sl from "./sl/translation.json";
 
 export default {
-  "pt-BR": ptBR,
+  "pt-BR": { ...ptBR, vimmvault: ptBRVimmVault },
   "pt-PT": ptPT,
-  en,
+  en: { ...en, vimmvault: enVimmVault },
   de,
   el,
   es,

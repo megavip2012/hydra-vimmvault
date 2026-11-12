@@ -29,6 +29,7 @@ import * as Sentry from "@sentry/react";
 import { ErrorBoundary } from "./components/error-boundary/error-boundary";
 import { levelDBService } from "./services/leveldb.service";
 import Catalogue from "./pages/catalogue/catalogue";
+import VimmVaultPage from "./pages/vimmvault/vimmvault-page";
 import Home from "./pages/home/home";
 import Downloads from "./pages/downloads/downloads";
 import GameDetails from "./pages/game-details/game-details";
@@ -141,6 +142,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
                 <Route element={<App />}>
                   <Route path="/" element={<Home />} />
                   <Route path="/catalogue" element={<Catalogue />} />
+                  <Route path="/vimmvault" element={<VimmVaultPage />} />
                   <Route path="/library" element={<Library />} />
                   <Route path="/downloads" element={<Downloads />} />
                   <Route
