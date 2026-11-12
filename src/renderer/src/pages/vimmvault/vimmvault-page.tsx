@@ -36,6 +36,14 @@ type VimmVaultIndex = {
 
 const CATALOGUE_URL =
   "https://raw.githubusercontent.com/megavip2012/Hydra-Launcher-Classics/main/catalog/index.json";
+const CATALOGUE_CACHE_KEY = "vimmvault-catalogue-v1";
+
+function parseCatalogue(value: unknown): VimmVaultGame[] | null {
+  if (!value || typeof value !== "object") return null;
+  const payload = value as Partial<VimmVaultIndex>;
+  if (payload.schemaVersion !== 1 || !Array.isArray(payload.games)) return null;
+  return payload.games.filter(isValidGame);
+}
 
 function isValidGame(value: unknown): value is VimmVaultGame {
   if (!value || typeof value !== "object") return false;
@@ -83,6 +91,20 @@ export default function VimmVaultPage() {
     const loadCatalogue = async () => {
       setLoading(true);
       setError(false);
+      let hasCachedCatalogue = false;
+
+      try {
+        const cached = localStorage.getItem(CATALOGUE_CACHE_KEY);
+        if (cached) {
+          const cachedGames = parseCatalogue(JSON.parse(cached));
+          if (cachedGames) {
+            setGames(cachedGames);
+            hasCachedCatalogue = true;
+          }
+        }
+      } catch {
+        localStorage.removeItem(CATALOGUE_CACHE_KEY);
+      }
 
       try {
         const response = await fetch(CATALOGUE_URL, {
@@ -92,18 +114,17 @@ export default function VimmVaultPage() {
         if (!response.ok) throw new Error(`Catalogue request failed: ${response.status}`);
 
         const payload = (await response.json()) as Partial<VimmVaultIndex>;
-        if (
-          payload.schemaVersion !== 1 ||
-          !Array.isArray(payload.games)
-        ) {
+        const validatedGames = parseCatalogue(payload);
+        if (!validatedGames) {
           throw new Error("Invalid VimmVault catalogue format");
         }
 
-        setGames(payload.games.filter(isValidGame));
+        setGames(validatedGames);
+        localStorage.setItem(CATALOGUE_CACHE_KEY, JSON.stringify(payload));
       } catch (cause) {
         if (!controller.signal.aborted) {
           console.error("Unable to load VimmVault catalogue", cause);
-          setError(true);
+          setError(!hasCachedCatalogue);
         }
       } finally {
         if (!controller.signal.aborted) setLoading(false);
