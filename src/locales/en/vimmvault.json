@@ -1,0 +1,19 @@
+{
+  "description": "Explore classic games by platform. Open each individual Vimm's Lair page to view the original source.",
+  "open_vault": "Open The Vault",
+  "filters": "VimmVault catalogue filters",
+  "search_placeholder": "Search games, platforms or developers",
+  "platform": "Platform",
+  "all_platforms": "All platforms",
+  "loading": "Loading VimmVault catalogue…",
+  "load_error_title": "Could not load the catalogue",
+  "load_error_description": "Check your connection and try again. The remote catalogue may be temporarily unavailable.",
+  "retry": "Try again",
+  "catalogue_empty_title": "The catalogue is being prepared",
+  "catalogue_empty_description": "The native interface is connected to the catalogue structure. Games will appear here as verified records are published.",
+  "no_results_title": "No games found",
+  "no_results_description": "Try another search term or select a different platform.",
+  "games_count": "{{count}} games",
+  "view_vimm_page": "Vimm page",
+  "catalog_only": "Catalogue only · no download"
+}
