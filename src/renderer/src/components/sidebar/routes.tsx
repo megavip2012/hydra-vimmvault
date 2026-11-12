@@ -37,6 +37,11 @@ export const routes = [
     render: () => <AppsIcon />,
   },
   {
+    path: "/vimmvault",
+    nameKey: "vimmvault",
+    render: () => <AppsIcon />,
+  },
+  {
     path: "/library",
     nameKey: "library",
     render: () => <BookIcon />,
